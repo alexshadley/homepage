@@ -2,7 +2,6 @@ module Main exposing (..)
 
 import Browser
 import Css exposing (..)
-import Debug
 import Html
 import Html.Styled exposing (..)
 import Html.Styled.Attributes exposing (css, href, src)
@@ -133,7 +132,7 @@ update msg model =
           in
             ( { model | feeds = model.feeds ++ [feed] }, summarizeCmd )
         Err e ->
-          ( Debug.log (Debug.toString e) model, Cmd.none )
+          ( model, Cmd.none )
 
     GotSummary url res ->
       case res of
@@ -145,7 +144,7 @@ update msg model =
           in
             ( { model | feeds = newFeeds }, Cmd.none )
         Err e ->
-          ( Debug.log (Debug.toString e) model, Cmd.none )
+          ( model, Cmd.none )
 
 ---- VIEW ----
 
